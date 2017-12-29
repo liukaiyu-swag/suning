@@ -12,11 +12,11 @@
 }
 @font-face {
   font-family: 'iconfont';  /* project id 495407 */
-  src: url('https://at.alicdn.com/t/font_495407_g1atjg50tap833di.eot');
-  src: url('https://at.alicdn.com/t/font_495407_g1atjg50tap833di.eot?#iefix') format('embedded-opentype'),
-  url('https://at.alicdn.com/t/font_495407_g1atjg50tap833di.woff') format('woff'),
-  url('https://at.alicdn.com/t/font_495407_g1atjg50tap833di.ttf') format('truetype'),
-  url('https://at.alicdn.com/t/font_495407_g1atjg50tap833di.svg#iconfont') format('svg');
+  src: url('http://at.alicdn.com/t/font_495407_g1atjg50tap833di.eot');
+  src: url('http://at.alicdn.com/t/font_495407_g1atjg50tap833di.eot?#iefix') format('embedded-opentype'),
+  url('http://at.alicdn.com/t/font_495407_g1atjg50tap833di.woff') format('woff'),
+  url('http://at.alicdn.com/t/font_495407_g1atjg50tap833di.ttf') format('truetype'),
+  url('http://at.alicdn.com/t/font_495407_g1atjg50tap833di.svg#iconfont') format('svg');
 }
 .daohang{
 	width: 100%;
@@ -253,7 +253,7 @@
 	overflow:hidden;
 
 }
-.toubu-bottom-zhong li:hover /* .toubu-bottom-zhong li */ a{
+.toubu-bottom-zhong li:hover a{
 	color: #FF6600;
 }
 .toubu-bottom-zhong li a{
@@ -408,11 +408,45 @@
 i{
 	font-family: iconfont;
 }
-.luobo-neikuan-zhong{
+.luobo-neir{
 	width: 830px;
 	height: 100%;
 	float: left;
 	position: relative;
+}
+.luobo-neir .xiaoyuandain{
+	display: flex;
+	justify-content: space-between;
+    opacity: .8;
+    padding: 0 8px 0 0;
+    width: 244px;
+    height: 20px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    bottom: 20px;
+    z-index: 999;
+}
+.luobo-neir .xiaoyuandain li{
+	display: block;
+	/*background: red;*/
+	margin-left: 8px;
+    width: 20px;
+    height: 20px;
+    background: url(../img/tupianjingling.png) -26px -100px;
+    color: #FFF;
+    cursor: pointer;
+}
+.luobo-neir .xiaoyuandain li.active{
+	background: url(../img/tupianjingling.png) 0 -100px;
+}
+
+.luobo-neikuan-zhong{
+	width: 830px;
+	height: 100%;
+	float: left;
 }
 .luobo-neikuan-zhong li{
 	width: 100%;
@@ -420,6 +454,12 @@ i{
 	position: absolute;
 	left: 0;
 	top: 0;
+	opacity: 0;
+	transition: all 1s;
+}
+.luobo-neikuan-zhong li.active{
+	z-index: 1;
+	opacity: 1;
 }
 .luobo-zhong-tu{
 	width: 100%;

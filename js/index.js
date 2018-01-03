@@ -1,124 +1,168 @@
 {
-	let imgs=document.querySelectorAll('.bannertu li .bannerimgtu')
-	let pagers=document.querySelectorAll('.s-zh-yd li')
-	let banner=document.querySelector('.banner')
-	let xiayi=document.querySelector('.s-ban-you')
-	let shangyi=document.querySelector('.s-ban-zuo')
-	pagers.forEach(function(ele,index){
-		ele.onmouseover=function(){
-			for(let i=0;i<imgs.length;i++){
-				pagers[i].classList.remove('active');
-				imgs[i].classList.remove('active')
-				
+	let imgs = document.querySelectorAll(".luobo-neikuan-zhong li");
+	let pagings = document.querySelectorAll(".xiaoyuandain li");
+	let banners = document.querySelector(".luobo-neir");
+	let next = document.querySelector(".lb-yjt");
+	let prev = document.querySelector(".lb-zjt");
+	pagings.forEach(function(ele, index) {
+		ele.onmouseover = function() {
+			for(let i = 0; i < pagings.length; i++) {
+				pagings[i].classList.remove("active");
+				imgs[i].classList.remove("active");
 			}
-			this.classList.add('active');
-			imgs[index].classList.add('active')
-			n=index
+			ele.classList.add("active");
+			imgs[index].classList.add("active");
+			n = index;
 		}
 	})
-    let n=0
-	function bannerFn(dir){
-		if(dir){
-			n--
-		}else{
-		n++;
+	let n = 0;
+
+	function bannerdh(x) {
+		if(x) {
+			n--;
+		} else {
+			n++;
 		}
-		if(n===-1){
-			n=imgs.length-1
+		if(n === -1) {
+			n = imgs.length - 1
 		}
-		if(n===imgs.length){
-			n=0
+		if(n == imgs.length) {
+			n = 0
 		}
-		for(let i=0;i<imgs.length;i++){
-			imgs[i].classList.remove('active')
-			pagers[i].classList.remove('active');
+		for(let i = 0; i < pagings.length; i++) {
+			pagings[i].classList.remove("active");
+			imgs[i].classList.remove("active");
 		}
-		pagers[n].classList.add('active');
-	    imgs[n].classList.add('active')
+		pagings[n].classList.add("active");
+		imgs[n].classList.add("active");
 	}
-	let st=setInterval(bannerFn,3000)
-	banner.onmouseover=function(){
+	let st = setInterval(bannerdh, 3000);
+	banners.onmouseover = function() {
 		clearInterval(st)
+	};
+	banners.onmouseout = function() {
+		st = setInterval(bannerdh, 3000);
 	}
-	banner.onmouseout=function(){
-		st=setInterval(bannerFn,3000)
-	}
-	xiayi.onclick=function(){
-		bannerFn()
-	}
-	shangyi.onclick=function(){
-		bannerFn()
-	}
-	let flat=true
-	xiayi.onclick=function(){
-		if(flat){
-			flat=false
-			bannerFn()
+	let flat = true
+	next.onclick = function() {
+		if(flat) {
+			flat = false
+			bannerdh()
 		}
 	}
-	shangyi.onclick=function(){
-		if(flat){
-			flat=false
-			bannerFn(1)
+	prev.onclick = function() {
+		if(flat) {
+			flat = false
+			bannerdh(1)
 		}
 	}
-	imgs.forEach(function(ele){
-		ele.addEventListener("transitionend",function(){
-			flat=true
+	imgs.forEach(function(ele) {
+		ele.addEventListener("transitionend", function() {
+			flat = true
 		})
 	})
 }
+//大聚惠
 {
-	let prev=document.querySelector('.wu-zuod')
-	let next=document.querySelector('.wu-zuoy')
-	let pingyi=document.querySelector('.w-xaiyi')
-//	console.log(pingyi)
-	prev.onclick=function(){
-		prev.classList.remove('active');
-	    next.classList.add('active')
-	    pingyi.style.transform="translateX(0px)"
-	}
+	let djh=document.querySelector(".djh-img1 ul")
+	let prev=document.querySelector(".btn8-left")
+	let next=document.querySelector(".btn8-right")
 	next.onclick=function(){
-		prev.classList.add('active');
-	    next.classList.remove('active')
-	    pingyi.style.transform='translateX(-1000px)'
+		djh.style.transform='translateX(-1000px)'
 	}
-//	let n=0
-//	function stay(){
-//		n++
-//		if(n%2==0){
-//			next.onclick()
-//		}else{
-//			prev.onclick()
-//		}
+	prev.onclick=function(){
+	    djh.style.transform="translateX(0px)"
+	}
+//	next.onclick=function(){
+//		djh.style.transform='translateX(-1000px)'
 //	}
-//	let st=setInterval(stay,3000)
-//	pingyi.onmouseover=function(){
-//		clearInterval(st)
-//	}
-//	pingyi.onmouseout=function(){
-//		st=setInterval(stay,3000)
-//	}
-	
+}
+//楼层跳转
+{
+	let nav_top=document.querySelector(".zuidingbu")
+	let floors = document.querySelectorAll(".beijing .shumaqiche")
+	let nav = document.querySelector("aside")
+	let navs = document.querySelectorAll(".aside_nr li")
+	let toptop = document.querySelector(".toptop")
+	let flag = true;
+	window.onscroll = function() {
+		if(flag) {
+			let st = document.documentElement.scrollTop;
+			if(st>1000){
+				nav_top.style.display="block"
+			}else{
+				nav_top.style.display="none"
+			}
+			if(st > 2180) {
+				nav.style.display = "block"
+			} else {
+				nav.style.display = "none"
+			}
+			floors.forEach(function(ele, index) {
+				if(st < floors[0].offsetTop) {
+					for(let i = 0; i < navs.length; i++) {
+						navs[i].classList.remove("active")
+					}
+					navs[0].classList.add("active")
+				}
+				if(st >= ele.offsetTop) {
+					for(let i = 0; i < navs.length; i++) {
+						navs[i].classList.remove("active")
+					}
+					navs[index + 1].classList.add("active")
+				}
+			})
+		}
+	}
+	navs.forEach(function(ele, index) {
+		ele.onclick = function() {
+			flag = false;
+			let st = floors[index].offsetTop;
+			st-=70
+			let now = document.documentElement.scrollTop;
+			let speed = (st - now) * 30 / 300;
+			let time = 0;
+			let t = setInterval(function() {
+				now += speed;
+				time += 30;
+				if(time === 300) {
+					clearInterval(t);
+					now = st;
+					flag=true;
+				}
+				document.documentElement.scrollTop = now;
+			}, 30)
+		}
+	})
+	toptop.onclick = function() {
+		let st = document.documentElement.scrollTop
+		let speed = st * 30 / 500
+		let t = setInterval(function() {
+			st -= speed
+			if(st <= 0) {
+				st = 0;
+				clearInterval(t)
+			}
+			document.documentElement.scrollTop = st
+		}, 30)
+	}
 }
 {
-	let inner=document.querySelector(".haohuo3 .content .list")
+	let inner=document.querySelector(".haohuo3 .content .list1")
 	let prev=document.querySelector(".haohuo3 .content .btn-left")
-	//let next=document.querySelector(".haohuo3 .content .bnt-right")
-	 let next=document.querySelector('.haohuo3 .content .btn-right')
+	let next=document.querySelector('.haohuo3 .content .btn-right')
 	let item=document.querySelectorAll(".haohuo3 .content .list .list2")
 	let pages=document.querySelectorAll(".haohuo3 .content .yuan div")
 	let items=item.length
 	console.log(item)
 	let n = 0;
-	//console.log(inner)
 	next.onclick = function() {
 		n++
 		if(n >=items) {
 				n = items-1
 				return
 			}
-			inner.style.marginLeft = -n * 379 + "px"
+			inner.style.marginLeft = -n * 369 + "px"
 			for(let i = 0; i < pages.length; i++) {
 				pages[i].classList.remove("active")
 			}
@@ -130,7 +174,7 @@
 				    n =0
 					return
 				}
-		    inner.style.marginLeft = -n * 379 + "px"
+		    inner.style.marginLeft = -n * 369 + "px"
 			for(let i = 0; i < pages.length; i++) {
 				pages[i].classList.remove("active")
 			}

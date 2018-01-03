@@ -755,7 +755,6 @@ i{
 	position: relative;
     height: 240px;
     overflow: hidden;
-	/*background: red;*/
 }
 .djh2 .djh-img1 ul{
 	position: absolute;
@@ -763,6 +762,7 @@ i{
     top: 0;
     width: 4000px;
     height: 240px;
+    transition: all 1s;
 }
 .djh2 .djh-img1 ul li{
 	position: relative;
@@ -826,6 +826,7 @@ i{
 .djh2  .btn8{
 	display: block;
 	position: absolute;
+	cursor: pointer;
     width: 30px;
     height: 64px;
     top: 60px;
@@ -1067,12 +1068,16 @@ i{
     overflow: hidden;
     margin: 10px 0 0 0;
 }
+.haohuo3{
+	overflow: hidden;
+}
 .haohuo3 .content .list .list1{
 	position: absolute;
     left: 0;
     top: 0;
     height: 360px;
-    width: 1200px;
+    width: 3000px;
+    transition: all 1s;
 }
 .haohuo3 .content .list2{
 	float: left;
@@ -1162,6 +1167,7 @@ i{
     height: 64px;
     top: 146px;
     background: url(../img/index.png);
+    cursor: pointer;
 }
 .haohuo3 .btn-left{
 	left: 0;
@@ -1194,7 +1200,7 @@ i{
     text-align: center;
     font-size: 0;
 }
-.haohuo3 .yuan a{
+.haohuo3 .yuan div{
 	position: relative;
     display: inline-block;
     margin-left: 10px;
@@ -1202,8 +1208,9 @@ i{
     width: 8px;
     height: 8px;
     border-radius: 100%;
+    cursor: pointer;
 }
-.haohuo3 .yuan a:first-child{
+.haohuo3 .yuan .active{
 	background: #c72c2c;
 }
 .temai-content{
@@ -2388,7 +2395,7 @@ i{
 	width: 80px;
 	height: 30px;
 }
-.meiweishenghuo{
+div.meiweishenghuo{
 	width: 1190px;
 	height: 455px;
 	margin: 0 auto;
@@ -2958,7 +2965,7 @@ aside{
     right: auto;
     margin-left: -670px;
     margin-top: -159.5px;
-    display: block;
+    display: none;
 }
 .aside-nei-tu{
 	position: absolute;
@@ -2976,35 +2983,168 @@ aside{
 	border: 1px solid #e8e8e8;
 	position: relative;
 }
-.aside-nr li:first-child a{
+.aside_nr li:hover{
 	background: #f60;
 	color: #fff;
 }
-.aside-nr li:hover a{
+.aside_nr li.active{
 	background: #f60;
 	color: #fff;
-	cursor: pointer;
 }
-.aside-nr li{
+.aside_nr li{
 	width: 68px;
     height: 28px;
     font-size: 12px;
+    color: #000;
     text-align: center;
     line-height: 28px;
     border-bottom: 1px solid #e8e8e8;
+    cursor: pointer;
 }
-.aside-nr li a{
-	display: block;
-	font-size: 12px;
-	color: #000;
-}
-.aside-nr{
+.aside_nr{
 	width: 68px;
     background: #f8f8f8;
 }
-.aside-di-1{
-	display: block;
+.toptop{
+	cursor: pointer;
     width: 68px;
     height: 18px;
     background: url('../img/tupianjingling.png') -230px -183px;
+}
+.zuidingbu{
+	position: fixed;
+    height: 50px;
+    width: 100%;
+    z-index: 9999;
+    background: rgba(255,255,255,0.95);
+    left: 0;
+    top: 0;
+    display: none;
+}
+.zuidingbu .dingbu{
+	width: 1190px;
+	height: 50px;
+	margin: 0 auto;
+}
+.dingbu .dingbuzuo{
+	width: 190px;
+	height: 38px;
+	margin-top:6px;
+	background: #FF6600;
+	float:left;
+}
+.dingbu .dingbuzuo img{
+	background: url(../img/index.png) no-repeat 0 0;
+	display: block;
+	width: 12px;
+	height: 12px;
+	float: left;
+	margin-left: 9px;
+	margin-top: 14px;
+	margin-right: 5px;
+}
+.dingbu .dingbuzuo span{
+	display: block;
+	font-size: 12px;
+	color: #FFFFFF;
+	padding-left: 5px;
+	line-height: 38px;
+}
+.dingbusousuo{
+	width: 540px;
+	height: 40px;
+	/*background: red;*/
+	float: left;
+	margin-top: 5px;
+	margin-left: 190px;
+}
+.dingbusousuo .zuo{
+	width: 428px;
+	height: 36px;
+	border-bottom: 2px solid #FF6700;
+	border-left: 2px solid #FF6700;
+	border-top: 2px solid #FF6700;
+	float: left;
+}
+.dingbusousuo .you{
+	width: 110px;
+	height: 40px;
+	background: #FF6700;
+	float: left;
+}
+.dingbusousuo i{
+	display: block;
+	width: 25px;
+	height: 40px;
+    font-size: 14px;
+    color: #ccc;
+    line-height: 40px;
+    text-align: right;
+    float: left;
+}
+.dingbusousuo .zuo .sousuo{
+	outline: none;
+	border:none;
+	width: 400px;
+	height: 36px;
+	float: left;
+	font-size: 12px;
+	color: #bbb;
+	padding-left: 2px;
+}
+.dingbusousuo .you .sousuo{
+	outline: none;
+	width: 110px;
+	height: 40px;
+	background: #FF6700;
+	display: block;
+	border: none;
+	font-size: 18px;
+	color: #fff;
+	cursor: pointer;
+}
+.zuidingbuyou{
+	width: 225px;
+	height: 50px;
+	/*background: red;*/
+	float:left;
+	margin-left: 45px;
+}
+.zuidingbuyou .zuo{
+	width: 100px;
+	height: 50px;
+	float: left;
+}
+.zuidingbuyou .zuo a{
+	display: block;
+	float: left;
+	font-size: 12px;
+	color: #333;
+	line-height: 50px;
+}
+.zuidingbuyou .zuo .zhuce{
+	display: block;
+	float: left;
+	font-size: 12px;
+	color: #ff6700;
+	line-height: 50px;
+	margin-left: 10px;
+}
+.zuidingbuyou .you{
+	width: 100px;
+	float: left;
+	height: 50px;
+	/*background: #333;*/
+}
+.zuidingbuyou .you img{
+	display: block;
+	width: 14px;
+	height: 14px;
+	float: left;
+}
+.zuidingbuyou .you div{
+	float: left;
+	font-size: 12px;
+	color: #FF6700;
+	line-height: 50px;
 }
